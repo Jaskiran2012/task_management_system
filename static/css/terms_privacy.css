@@ -1,0 +1,43 @@
+/* Terms & Privacy Page */
+.terms-privacy-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.terms-privacy-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.terms-privacy-container h2 {
+    margin-top: 20px;
+    color: #007BFF;
+}
+
+.terms-privacy-container p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.terms-privacy-container ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.terms-privacy-container ul li {
+    margin-bottom: 10px;
+}
+
+.terms-privacy-container a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.terms-privacy-container a:hover {
+    text-decoration: underline;
+}

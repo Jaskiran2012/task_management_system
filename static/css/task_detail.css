@@ -1,0 +1,16 @@
+h2 {
+    color: #333;
+}
+
+p {
+    margin: 10px 0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
