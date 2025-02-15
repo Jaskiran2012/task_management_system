@@ -1,18 +1,39 @@
-ul {
-    list-style-type: none;
-    padding: 0;
+body {
+    font-family: Arial, sans-serif;
 }
 
-li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+h2 {
+    margin-bottom: 20px;
 }
 
 a {
     text-decoration: none;
-    color: #333;
+    color: #007bff;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.task-status {
+    font-weight: bold;
+}
+
+.task-due-date {
+    color: red;
 }
