@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
 from datetime import datetime  # Import datetime module
 
 # Initialize Flask app
@@ -9,9 +10,12 @@ app.config['SECRET_KEY'] = 'your_secret_key'  # Required for session management 
 
 # Initialize the database
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
 # Define models
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
@@ -30,6 +34,10 @@ class Task(db.Model):
 with app.app_context():
     db.create_all()
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 # Routes
 @app.route('/')
 def index():
@@ -42,6 +50,7 @@ def login():
         password = request.form.get('password')
         user = User.query.filter_by(username=username, password=password).first()
         if user:
+            login_user(user)
             return redirect(url_for('dashboard'))
         else:
             flash('Invalid credentials')
@@ -75,16 +84,22 @@ def forgot_password():
     return render_template('forgot_password.html')
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
-    tasks = Task.query.all()
+    tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('dashboard.html', tasks=tasks)
 
 @app.route('/task/<int:task_id>')
+@login_required
 def task_detail(task_id):
     task = Task.query.get_or_404(task_id)
+    if task.user_id != current_user.id:
+        flash('You do not have permission to view this task')
+        return redirect(url_for('dashboard'))
     return render_template('task_detail.html', task=task)
 
 @app.route('/create_task', methods=['GET', 'POST'])
+@login_required
 def create_task():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -92,7 +107,6 @@ def create_task():
         status = request.form.get('status')
         priority = request.form.get('priority')
         deadline_str = request.form.get('deadline')  # Get deadline as a string
-        user_id = 1  # Replace with actual user ID (e.g., from session)
 
         # Convert the deadline string to a datetime object
         try:
@@ -108,7 +122,7 @@ def create_task():
             status=status,
             priority=priority,
             deadline=deadline,  # Use the datetime object
-            user_id=user_id
+            user_id=current_user.id
         )
 
         # Add and commit the task to the database
@@ -117,6 +131,12 @@ def create_task():
 
         return redirect(url_for('dashboard'))
     return render_template('create_task.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 # Run the application
 if __name__ == '__main__':
