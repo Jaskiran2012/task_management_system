@@ -1,4 +1,10 @@
 /* Background container */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 .background-container {
     position: fixed;
     top: 0;
@@ -6,76 +12,55 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1; /* Ensure it stays behind the login form */
+    z-index: -1;
 }
 
-/* Background image */
 .background-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%; /* Double the width for smooth scrolling */
+    width: 100%;
     height: 100%;
-    background-image: url('/static/images/login.jpg'); /* Path to your image */
     background-size: cover;
     background-position: center;
-    animation: moveBackground 20s linear infinite; /* Animation for moving background */
+    animation: slide 15s infinite; /* Added this line */
 }
 
-/* Animation for moving background */
-@keyframes moveBackground {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%); /* Move the background to the left */
-    }
+@keyframes slide { /* Added this block */
+    0% { background-image: url('/static/images/login.jpg'); }
+    33% { background-image: url('/static/images/login.jpg'); }
+    66% { background-image: url('/static/images/login.jpg'); }
+    100% { background-image: url('/static/images/login.jpg'); }
 }
 
-/* Login container */
 .login-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    position: relative;
+    z-index: 1;
+    max-width: 400px;
+    margin: 100px auto;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
 }
 
 .login-container h2 {
+    text-align: center;
     margin-bottom: 20px;
 }
 
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
 .login-container label {
-    display: block;
     margin-bottom: 5px;
-    font-weight: bold;
 }
 
 .login-container input {
-    width: 100%;
-    padding: 10px;
     margin-bottom: 15px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login-container button:hover {
-    background-color: #0056b3;
 }
 
 .login-container .forgot-password {
@@ -83,25 +68,19 @@
     margin-bottom: 15px;
 }
 
-.login-container .forgot-password a {
-    color: #007BFF;
-    text-decoration: none;
-    font-size: 14px;
+.login-container button {
+    padding: 10px;
+    background-color: #DE483A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.login-container .forgot-password a:hover {
-    text-decoration: underline;
+.login-container button:hover {
+    background-color: #456d14;
 }
 
 .login-container .signup-prompt {
-    margin-top: 15px;
-}
-
-.login-container .signup-prompt a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.login-container .signup-prompt a:hover {
-    text-decoration: underline;
+    text-align: center;
 }

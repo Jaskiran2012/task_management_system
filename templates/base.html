@@ -9,19 +9,21 @@
 </head>
 <body>
     <header>
-        <h1>Task Management System</h1>
+        <div class="header-container">
+        <h1>Todoist</h1>
         <nav>
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('dashboard') }}">Dashboard</a>
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('signup') }}">Signup</a>
         </nav>
+    </div>
     </header>
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; 2023 Task Management System</p>
+        <p>&copy; 2025 Todoist</p>
     </footer>
     {% block js %}{% endblock %}
 </body>

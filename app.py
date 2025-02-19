@@ -41,7 +41,7 @@ def load_user(user_id):
 # Routes
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('copilot.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -87,7 +87,7 @@ def forgot_password():
 @login_required
 def dashboard():
     tasks = Task.query.filter_by(user_id=current_user.id).all()
-    return render_template('dashboard.html', tasks=tasks)
+    return render_template('startforfree.html', tasks=tasks)
 
 @app.route('/task/<int:task_id>')
 @login_required
