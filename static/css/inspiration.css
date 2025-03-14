@@ -1,0 +1,104 @@
+/* Inspiration Container */
+.inspiration-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif; /* Import from Google Fonts for better typography */
+    color: #333;
+}
+
+.inspiration-container h1 {
+    text-align: center;
+    color: #007bff;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections */
+section {
+    margin-bottom: 40px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #007bff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0f7fa;
+    padding-bottom: 5px;
+    font-size: 1.8em;
+}
+
+section ul {
+    list-style-type: disc;
+    padding-left: 25px;
+}
+
+section ul li {
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Quotes */
+blockquote {
+    background-color: #e3f2fd;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #555;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+blockquote strong {
+    color: #007bff;
+}
+
+/* Videos */
+.video-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.video-container iframe {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .inspiration-container {
+        padding: 15px;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Hover Effects for List Items */
+section ul li:hover {
+    color: #007bff;
+    cursor: pointer;
+    transform: translateX(5px);
+    transition: all 0.3s ease;
+}

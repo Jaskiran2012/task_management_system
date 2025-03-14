@@ -133,3 +133,25 @@ section h2 {
 .dashboard-content .task-due-date {
     color: red;
 }
+
+/* Add this to your startforfree.css file */
+.task-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-checkbox {
+    margin-right: 10px;
+}
+
+.task-status {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.task-due-date {
+    margin-left: 10px;
+    color: #888;
+}

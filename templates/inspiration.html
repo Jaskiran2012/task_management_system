@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Inspiration{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inspiration.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="inspiration-container">
+    <h1>Inspiration for Task Management</h1>
+
+    <!-- Tips Section -->
+    <section id="tips">
+        <h2>Tips for Effective Task Management</h2>
+        <ul>
+            <li>Break large tasks into smaller, manageable sub-tasks.</li>
+            <li>Prioritize tasks based on urgency and importance.</li>
+            <li>Use tools like Todoist to stay organized.</li>
+            <li>Set realistic deadlines and stick to them.</li>
+            <li>Review and adjust your task list regularly.</li>
+        </ul>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <h2>Benefits of Task Management</h2>
+        <ul>
+            <li>Reduces stress by organizing your workload.</li>
+            <li>Increases productivity by focusing on priorities.</li>
+            <li>Helps you achieve your goals faster.</li>
+            <li>Improves time management skills.</li>
+            <li>Provides a sense of accomplishment.</li>
+        </ul>
+    </section>
+
+    <!-- Time Management Section -->
+    <section id="time-management">
+        <h2>Time Management Strategies</h2>
+        <ul>
+            <li>Use the <strong>Pomodoro Technique</strong> to work in focused intervals.</li>
+            <li>Set specific time blocks for different tasks.</li>
+            <li>Avoid multitasking; focus on one task at a time.</li>
+            <li>Use a calendar to schedule tasks and deadlines.</li>
+            <li>Track your time to identify areas for improvement.</li>
+        </ul>
+    </section>
+
+    <!-- Consistency Tips Section -->
+    <section id="consistency">
+        <h2>How to Stay Consistent</h2>
+        <ul>
+            <li>Create a daily routine and stick to it.</li>
+            <li>Set small, achievable goals to build momentum.</li>
+            <li>Reward yourself for completing tasks.</li>
+            <li>Use reminders and notifications to stay on track.</li>
+            <li>Reflect on your progress regularly.</li>
+        </ul>
+    </section>
+
+    <!-- Goal-Setting Benefits Section -->
+    <section id="goal-setting">
+        <h2>Benefits of Goal Setting</h2>
+        <ul>
+            <li>Provides clarity and direction.</li>
+            <li>Motivates you to take action.</li>
+            <li>Helps you measure progress.</li>
+            <li>Increases accountability.</li>
+            <li>Boosts confidence as you achieve milestones.</li>
+        </ul>
+    </section>
+
+    <!-- Famous Quotes Section -->
+    <section id="quotes">
+        <h2>Famous Quotes on Productivity</h2>
+        <blockquote>
+            "Productivity is never an accident. It is always the result of a commitment to excellence, intelligent planning, and focused effort." – <strong>Paul J. Meyer</strong>
+        </blockquote>
+        <blockquote>
+            "The key is not to prioritize what's on your schedule, but to schedule your priorities." – <strong>Stephen Covey</strong>
+        </blockquote>
+        <blockquote>
+            "You don't have to see the whole staircase, just take the first step." – <strong>Martin Luther King Jr.</strong>
+        </blockquote>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos">
+        <h2>Inspirational Videos</h2>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2U5yVxH4J5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/6GvTLzVk5w0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+</div>
+{% endblock %}
