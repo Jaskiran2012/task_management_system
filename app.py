@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
 from datetime import datetime  # Import datetime module
+from flask_migrate import Migrate  # Import Flask-Migrate
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -13,6 +14,9 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+# Initialize Flask-Migrate
+migrate = Migrate(app, db)  # Add this line
 
 # Define models
 class User(db.Model, UserMixin):
@@ -33,7 +37,6 @@ class Task(db.Model):
 # Create the database tables (run this once)
 with app.app_context():
     db.create_all()
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -84,7 +87,6 @@ def forgot_password():
     return render_template('forgot_password.html')
 
 @app.route('/dashboard')
-@login_required
 def dashboard():
     tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('startforfree.html', tasks=tasks)
@@ -107,6 +109,7 @@ def create_task():
         status = request.form.get('status')
         priority = request.form.get('priority')
         deadline_str = request.form.get('deadline')  # Get deadline as a string
+        
 
         # Convert the deadline string to a datetime object
         try:
@@ -131,7 +134,6 @@ def create_task():
 
         return redirect(url_for('dashboard'))
     return render_template('create_task.html')
-
 @app.route('/logout')
 @login_required
 def logout():
